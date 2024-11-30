@@ -10,17 +10,45 @@
 
 namespace py = pybind11;
 
+/**
+ * @brief Exception class to throw when object in the critical range is noticed 
+ */
 class ObjectTooCloseForComfort : public std::exception {
 private:
 	std::string msg;
 public:
+/**
+ * @brief Constructor for ObjectTooCloseForComfort
+ *
+ * @param message Error message
+ */
 	ObjectTooCloseForComfort(std::string message) : msg(message) {
 	}
+
+
+/**
+ * @brief Get error message
+ * 
+ * @return message as a c_string
+ */
 	const char* what() const noexcept override {
 		return msg.c_str();
   }
 };
 
+/**
+ * @brief Check if there are any objects closer that objectStreshold
+ * 
+ * Throws an ObjectTooCloseForComfort if there is a object closer than criticalStreshold
+ *
+ * @param numpyData         depthMap as numpy array
+ * @param objectStreshold   Streshold for elements to notify
+ * @param criticalStreshold Streshold for elements to notify
+ * @param width             width of the depthMap
+ * @param height            height of the depthMap
+ *
+ * @return list of objects closer than the objectStreshold
+ */
 std::vector<std::tuple<int,int,double>> addVec(py::array_t<double> numpyData, double objectStreshold, double criticalStreshold, int width, int height){
 	double* cData = static_cast<double*>(numpyData.request().ptr);
 	std::vector<std::tuple<int,int,double>>retVec;
