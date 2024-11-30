@@ -49,7 +49,7 @@ public:
  *
  * @return list of objects closer than the objectStreshold
  */
-std::vector<std::tuple<int,int,double>> addVec(py::array_t<double> numpyData, double objectStreshold, double criticalStreshold, int width, int height){
+std::vector<std::tuple<int,int,double>> getObjectClose(py::array_t<double> numpyData, double objectStreshold, double criticalStreshold, int width, int height){
 	double* cData = static_cast<double*>(numpyData.request().ptr);
 	std::vector<std::tuple<int,int,double>>retVec;
 	double closest = 10000;
@@ -92,8 +92,8 @@ std::vector<std::tuple<int,int,double>> addVec(py::array_t<double> numpyData, do
 	return retVec;
 }
 
-PYBIND11_MODULE(example, m) {
-	m.def("addVec", &addVec, "A function that adds two vectors");
+PYBIND11_MODULE(getObjects, m) {
+	m.def("getObjectClose", &getObjectClose, "A function that adds two vectors");
 
 	// py::register_exception<ObjectTooCloseForComfort>(m, "ObjectTooCloseForComfort");
 	py::register_exception<ObjectTooCloseForComfort>(m, "ObjectTooCloseForComfort", PyExc_Exception);

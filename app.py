@@ -2,7 +2,7 @@ from time import time
 import numpy as np
 from sys import stderr
 
-from example import addVec, ObjectTooCloseForComfort
+from getObjects import getObjectClose, ObjectTooCloseForComfort
 
 IMAGE_WIDTH = 5
 IMAGE_HEIGHT = 10
@@ -29,7 +29,7 @@ def getObjectsCloserThanWrapper(
     """
     try:
         test = np.array(
-            addVec(numpyData, objectStreshold, criticalStreshold, width, height)
+            getObjectClose(numpyData, objectStreshold, criticalStreshold, width, height)
         )
         return test
     except ObjectTooCloseForComfort as ee:

@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 from random import randrange, seed
 
-from getObjectClose import getObjectsCloserThanWrapper
+from app import getObjectsCloserThanWrapper
 
 
 def setSeed(curSeed=randrange(0, int(1e8))):

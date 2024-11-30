@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(example LANGUAGES CXX)
+project(getObjects LANGUAGES CXX)
 
 # Require C++11 or newer
 set(CMAKE_CXX_STANDARD 11)
@@ -22,8 +22,8 @@ find_package(pybind11 REQUIRED)
 include_directories(${Python3_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS})
 
 # Define the target module
-pybind11_add_module(example main.cpp)
+pybind11_add_module(getObjects main.cpp)
 
 # Link Python libraries (if needed)
-target_link_libraries(example PRIVATE Python3::Python Python3::NumPy)
-target_link_libraries(example PRIVATE OpenMP::OpenMP_CXX)
+target_link_libraries(getObjects PRIVATE Python3::Python Python3::NumPy)
+target_link_libraries(getObjects PRIVATE OpenMP::OpenMP_CXX)
