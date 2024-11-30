@@ -2,7 +2,7 @@ from time import time
 import numpy as np
 from sys import stderr
 
-from getObjects import getObjectClose, ObjectTooCloseForComfort
+from build.getObjects import getObjectClose, ObjectTooCloseForComfort
 
 IMAGE_WIDTH = 5
 IMAGE_HEIGHT = 10
