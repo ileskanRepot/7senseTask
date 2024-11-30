@@ -2,6 +2,7 @@
   pkgs.mkShell {
     nativeBuildInputs = let
       env = pyPkgs : with pyPkgs; [
+        matplotlib
         numpy
       ];
     in with pkgs; [
