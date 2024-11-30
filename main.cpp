@@ -35,10 +35,10 @@ std::vector<std::tuple<int,int,double>> addVec(py::array_t<double> numpyData, do
 		for (int ii = 0;ii < width*height;ii++){
 
 
-			if (cData[ii] < closest ){
-				closest = cData[ii];
+			if (cData[ii] < closestLocal){
+				closestLocal = cData[ii];
 			}
-			if (cData[ii] < objectStreshold ){
+			if (cData[ii] < objectStreshold){
 				int xCoord = ii % width;
 				int yCoord = ii / width;
 				double dist = cData[ii];
@@ -47,7 +47,11 @@ std::vector<std::tuple<int,int,double>> addVec(py::array_t<double> numpyData, do
 		}
 		#pragma omp critical
 		{
-			retVec.insert(retVec.end(), localVec.begin(), localVec.end());
+			retVec.insert(
+					retVec.end(), 
+					localVec.begin(), 
+					localVec.end()
+			);
 			if (closestLocal < closest){
 				closest = closestLocal;
 			}
