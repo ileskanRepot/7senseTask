@@ -2,7 +2,6 @@
   pkgs.mkShell {
     nativeBuildInputs = let
       env = pyPkgs : with pyPkgs; [
-        matplotlib
         pybind11
         numpy
         pytest
