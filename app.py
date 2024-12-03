@@ -44,10 +44,6 @@ if __name__ == "__main__":
     tGen1 = time()
 
     closerThan = 2.0
-    closerThan = 2.0
-    # print([ii for ii in depthMap if ii < closerThan])
-    closerThan = 2.0
-    # print([ii for ii in depthMap if ii < closerThan])
     tCPP0 = time()
     closer = getObjectsCloserThanWrapper(
         depthMap, closerThan, CRITICAL_RANGE, IMAGE_WIDTH, IMAGE_HEIGHT

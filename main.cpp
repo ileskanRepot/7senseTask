@@ -95,6 +95,5 @@ std::vector<std::tuple<int,int,double>> getObjectClose(py::array_t<double> numpy
 PYBIND11_MODULE(getObjects, m) {
 	m.def("getObjectClose", &getObjectClose, "A function that adds two vectors");
 
-	// py::register_exception<ObjectTooCloseForComfort>(m, "ObjectTooCloseForComfort");
 	py::register_exception<ObjectTooCloseForComfort>(m, "ObjectTooCloseForComfort", PyExc_Exception);
 }
